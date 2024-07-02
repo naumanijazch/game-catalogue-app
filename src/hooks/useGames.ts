@@ -1,52 +1,23 @@
-import { useState, useEffect } from 'react'
-import apiClient from '../services/api-client';
-import { CanceledError } from 'axios';
+import useData from "./useData";
+import { Genre } from "./useGenres";
 
 export interface Platform {
-  id: number
-  name: string
-  slug: string
+  id: number;
+  name: string;
+  slug: string;
 }
+
 export interface Game {
-    id: number;
-    name: string;
-    background_image: string;
-    parent_platforms: {platform: Platform} []
-    metacritic: number
-  }
-  
-  interface FetchGamesResponse {
-    count: number;
-    results: Game[];
+  id: number;
+  name: string;
+  background_image: string;
+  parent_platforms: { platform: Platform }[];
+  metacritic: number;
 }
 
-const useGames = () => {
-    const [games, setGames] = useState<Game[]>([]);
-    const [error, setError] = useState("");
-    const [isLoading, setIsLoading] = useState(false)
-  
-    useEffect(() => {
-      const controller = new AbortController()
-      setIsLoading(true)
-      const FetchGames = async () => {
-        try {
-          const res = await apiClient.get<FetchGamesResponse>("/games", {signal: controller.signal});
-          console.log("Res: ", res);
-          setGames(res.data.results);
-          setIsLoading(false)
-          console.log("Successful");
-        } catch (error: any) {
-            if (error instanceof CanceledError) return;
-            setError(error.message);
-            setIsLoading(false)
-            console.log("Error: ", error.message);
-        }
-      };
-      FetchGames();
-      return ()=> {controller.abort}
-    }, []);
+const useGames = (selectedGenre: Genre | null) =>
+  useData<Game>("/games", { params: { genres: selectedGenre?.id } }, [
+    selectedGenre?.id,
+  ]);
 
-    return {games, error, isLoading}
-}
-
-export default useGames
+export default useGames;
