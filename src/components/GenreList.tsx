@@ -18,9 +18,9 @@ interface Props {
 const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
 
-  if (error) return null;
 
-  if (isLoading) return <Spinner />;
+  // if (error) return null;  // currently set to load from local storage thus not needed
+  // if (isLoading) return <Spinner />;
 
   return (
     <List>
