@@ -1,4 +1,12 @@
-import { Box, Flex, Grid, GridItem, Show } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Flex,
+  Grid,
+  GridItem,
+  Show,
+  Spinner,
+} from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
@@ -18,8 +26,20 @@ export interface GameQuery {
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  const [isLoading, setIsLoading] = useState(false);
 
-  return (
+  return isLoading ? (
+    <Box // You can also use a div or other container if you prefer.
+      display="flex"
+      flexDirection={"column"}
+      justifyContent="center"
+      alignItems="center"
+      height="100vh" // Optional: Make the container take full viewport height
+    >
+      <Spinner size={"md"} />
+      <Text>Redirecting to GitHub Page</Text>
+    </Box>
+  ) : (
     <Grid
       templateAreas={{
         base: `"nav" "main"`,
@@ -32,6 +52,7 @@ function App() {
     >
       <GridItem area="nav">
         <NavBar
+          onLoading={() => setIsLoading(true)}
           onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
         />
       </GridItem>
