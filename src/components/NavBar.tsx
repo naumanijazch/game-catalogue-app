@@ -1,5 +1,5 @@
 import { HStack, Image } from "@chakra-ui/react";
-import logo from "../assets/Logo/logo.webp";
+
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
 
@@ -8,9 +8,12 @@ interface NavBarProps {
 }
 
 const NavBar = ({ onSearch }: NavBarProps) => {
+  const githubProfilePicture: string =
+    "https://avatars.githubusercontent.com/u/113093372?s=96&v=4";
+
   return (
     <HStack padding={"10px"}>
-      <Image src={logo} boxSize={"60px"} />
+      <Image src={githubProfilePicture} boxSize={"60px"} borderRadius={"50%"} />
       <SearchInput onSearch={onSearch}></SearchInput>
       <ColorModeSwitch></ColorModeSwitch>
     </HStack>
