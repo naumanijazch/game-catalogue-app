@@ -6,7 +6,6 @@ import {
   HStack,
   Image,
   Spacer,
-  Stack,
 } from "@chakra-ui/react";
 import { Game } from "../hooks/useGames";
 import getCroppedImageUrl from "../services/image-url";
