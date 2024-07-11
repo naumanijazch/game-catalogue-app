@@ -12,7 +12,7 @@ export interface Game {
   background_image: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
-  rating_top: number;
+  rating: number;
 }
 
 const useGames = (gameQuery: GameQuery) =>
@@ -32,7 +32,7 @@ const useGames = (gameQuery: GameQuery) =>
       return lastPage.next ? allPages.length + 1 : undefined;
     },
     initialPageParam: 1,
-    staleTime: ms("24")
+    staleTime: ms("24"),
   });
 
 export default useGames;
