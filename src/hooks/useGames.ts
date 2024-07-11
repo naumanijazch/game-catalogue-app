@@ -4,7 +4,6 @@ import { FetchResponse } from "../services/api-client";
 import { useQuery } from "@tanstack/react-query";
 import { Platform } from "./usePlatforms";
 
-
 export interface Game {
   id: number;
   name: string;
