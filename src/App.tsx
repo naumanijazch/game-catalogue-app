@@ -29,12 +29,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   return isLoading ? (
-    <Box // You can also use a div or other container if you prefer.
+    <Box
       display="flex"
       flexDirection={"column"}
       justifyContent="center"
       alignItems="center"
-      height="100vh" // Optional: Make the container take full viewport height
+      height="100vh"
     >
       <Spinner size={"md"} />
       <Text>Redirecting to GitHub Page</Text>
