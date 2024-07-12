@@ -18,6 +18,10 @@ interface Props {
 }
 
 const GameCard = ({ game }: Props) => {
+  if (!game) {
+    return null; // or handle the case when game is undefined/null
+  }
+
   return (
     <Card key={"md"} size={"md"}>
       <Image src={getCroppedImageUrl(game.background_image)} />
@@ -27,7 +31,7 @@ const GameCard = ({ game }: Props) => {
         </Box>{" "}
         <HStack justifyContent="space-between" marginTop={3}>
           <PlatformIconList
-            platforms={game.parent_platforms.map((p) => p.platform)}
+            platforms={game.parent_platforms?.map((p) => p.platform) || []}
           />
           <Box display="flex" alignItems="center">
             <CriticScore score={game.metacritic} />

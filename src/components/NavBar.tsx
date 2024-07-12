@@ -4,19 +4,17 @@ import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
 
 interface NavBarProps {
-  onSearch: (searchText: string) => void;
-  onLoading: ()=> void
+  onLoading: () => void;
 }
 
-const NavBar = ({ onSearch, onLoading }: NavBarProps) => {
-
+const NavBar = ({ onLoading }: NavBarProps) => {
   const githubProfilePicture: string =
     "https://avatars.githubusercontent.com/u/113093372?s=96&v=4";
   const githubProfileURL: string = "https://github.com/naumanijazch";
 
   const redirectToGitHub = () => {
     window.location.href = githubProfileURL;
-    onLoading()
+    onLoading();
   };
 
   return (
@@ -29,7 +27,7 @@ const NavBar = ({ onSearch, onLoading }: NavBarProps) => {
           alt="Git Hub Profile"
         />
       </Button>
-      <SearchInput onSearch={onSearch}></SearchInput>
+      <SearchInput></SearchInput>
       <ColorModeSwitch></ColorModeSwitch>
     </HStack>
   );

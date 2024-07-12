@@ -7,16 +7,14 @@ import {
   // Spinner,
   // Text,
 } from "@chakra-ui/react";
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
+import useGameQueryStore from "./store";
 
-interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenreId?: number;
-}
-
-const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
+const GenreList = () => {
   const { data } = useGenres();
+  const selectedGenreId = useGameQueryStore((state) => state.gameQuery.genreId);
+  const setGenreId = useGameQueryStore((state) => state.setGenreId);
   // const { data, isLoading, error } = useGenres();
   // if (error) return null;  // currently set to load from local storage thus not needed
   // if (isLoading) return <Spinner />;
@@ -33,7 +31,7 @@ const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
             />
             <Button
               fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
-              onClick={() => onSelectGenre(genre)}
+              onClick={() => setGenreId(genre.id)}
               fontSize="lg"
               variant="link"
               justifyContent={"flex-start"}
