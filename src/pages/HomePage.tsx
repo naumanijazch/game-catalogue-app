@@ -1,34 +1,11 @@
-import {
-  Box,
-  //   Spinner,
-  Grid,
-  Show,
-  GridItem,
-  Flex,
-  //   Text,
-} from "@chakra-ui/react";
-// import { useState } from "react";
+import { Box, Grid, Show, GridItem, Flex } from "@chakra-ui/react";
 import GameGrid from "../components/GameGrid";
 import GameHeading from "../components/GameHeading";
 import GenreList from "../components/GenreList";
 import PlatformSelector from "../components/PlatformSelector";
 import SortSelector from "../components/SortSelector";
 
-const Homepage = () => {
-  //   const [isLoading, setIsLoading] = useState(false);
-
-  //   return isLoading ? (
-  //     <Box
-  //       display="flex"
-  //       flexDirection={"column"}
-  //       justifyContent="center"
-  //       alignItems="center"
-  //       height="100vh"
-  //     >
-  //       <Spinner size={"md"} />
-  //       <Text>Redirecting to GitHub Page</Text>
-  //     </Box>
-  //   ) :
+const HomePage = () => {
   return (
     <>
       <Grid
@@ -63,4 +40,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default HomePage;
