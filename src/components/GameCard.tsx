@@ -7,7 +7,7 @@ import {
   Image,
   Spacer,
 } from "@chakra-ui/react";
-import { Game } from "../hooks/useGames";
+import { Game } from "../entities/Game";
 import getCroppedImageUrl from "../services/image-url";
 import CriticScore from "./CriticScore";
 import PlatformIconList from "./PlatformIconList";
@@ -39,7 +39,7 @@ const GameCard = ({ game }: Props) => {
           <Box display="flex" alignItems="center">
             <CriticScore score={game.metacritic} />
             <Spacer width={2} />
-            <Rating rating={game.rating} />
+            <Rating rating={game.rating_top} />
           </Box>
         </HStack>
       </CardBody>
