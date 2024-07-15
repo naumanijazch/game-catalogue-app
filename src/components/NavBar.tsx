@@ -4,18 +4,13 @@ import SearchInput from "./SearchInput";
 import websiteLogo from "../assets/website_logo.jpeg";
 import { Link } from "react-router-dom";
 
-interface NavBarProps {
-  onLoading: () => void;
-}
-
-const NavBar = ({ onLoading }: NavBarProps) => {
+const NavBar = () => {
   const githubProfilePicture: string =
     "https://avatars.githubusercontent.com/u/113093372?s=96&v=4";
   const githubProfileURL: string = "https://github.com/naumanijazch";
 
   const redirectToGitHub = () => {
-    window.location.href = githubProfileURL;
-    onLoading();
+    window.open(githubProfileURL, "_blank");
   };
 
   return (
