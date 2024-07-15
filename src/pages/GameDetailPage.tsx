@@ -1,20 +1,51 @@
 import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
-import { Heading, Spinner, Text } from "@chakra-ui/react";
+import { Button, Heading, Spinner, Text } from "@chakra-ui/react";
 import ErrorPage from "./ErrorPage";
+import { SetStateAction, useEffect, useState } from "react";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!); //* slug will always be available
 
-  console.log("GAME: ", game);
+  const [showMore, setShowMore] = useState(false);
+  const [description, setDescription] = useState("");
+  const limit = 500;
+
+  useEffect(() => {
+    setDescription(game?.description_raw.slice(0, limit) + " ...");
+  }, [game]);
+
+  const handleClick = () => {
+    if (game) {
+      if (showMore) {
+        setDescription(game?.description_raw.slice(0, limit) + " ...");
+      } else {
+        setDescription(game?.description_raw.split("Español")[0]);
+      }
+      setShowMore(!showMore);
+    }
+  };
+
   if (isLoading) return <Spinner />;
   if (error || !game) return <ErrorPage />;
 
   return (
     <div style={{ padding: 20 }}>
       <Heading>{game.name}</Heading>
-      <Text>{game.description_raw}</Text>
+      <Text>
+        {description}
+
+        <Button
+          size="xs"
+          fontWeight={"bold"}
+          colorScheme="blue"
+          marginLeft={3}
+          onClick={() => handleClick()}
+        >
+          {!showMore ? "Show More" : "Show Less"}
+        </Button>
+      </Text>
     </div>
   );
 };
