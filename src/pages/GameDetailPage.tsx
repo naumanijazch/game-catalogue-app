@@ -4,6 +4,7 @@ import { Button, Heading, Spinner, Text } from "@chakra-ui/react";
 import ErrorPage from "./ErrorPage";
 import { useEffect, useState } from "react";
 import GameAttributes from "../components/GameAttributes";
+import GameTrailer from "../components/GameTrailer";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -48,6 +49,7 @@ const GameDetailPage = () => {
         </Button>
       </Text>
       <GameAttributes game={game}></GameAttributes>
+      <GameTrailer gameId={game.id}></GameTrailer>
     </div>
   );
 };
