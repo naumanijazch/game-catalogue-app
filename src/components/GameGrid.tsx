@@ -9,7 +9,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 const GameGrid = () => {
   const { data, error, isLoading, fetchNextPage, hasNextPage } = useGames();
-  const skeletons = [1, 2, 3, 4, 5, 6];
+  const skeletons = [...Array(20).keys()];
 
   if (error) return <Text>{error.message}</Text>;
   const fetchedGamesCount =
