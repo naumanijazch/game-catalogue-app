@@ -5,6 +5,7 @@ import ErrorPage from "./ErrorPage";
 import { useEffect, useState } from "react";
 import GameAttributes from "../components/GameAttributes";
 import GameTrailer from "../components/GameTrailer";
+import GameScreenshots from "../components/GameScreenshots";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -50,6 +51,7 @@ const GameDetailPage = () => {
       </Text>
       <GameAttributes game={game}></GameAttributes>
       <GameTrailer gameId={game.id}></GameTrailer>
+      <GameScreenshots gameId={game.id} />{" "}
     </div>
   );
 };
