@@ -2,7 +2,8 @@ import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
 import { Button, Heading, Spinner, Text } from "@chakra-ui/react";
 import ErrorPage from "./ErrorPage";
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import GameAttributes from "../components/GameAttributes";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -46,6 +47,7 @@ const GameDetailPage = () => {
           {!showMore ? "Show More" : "Show Less"}
         </Button>
       </Text>
+      <GameAttributes game={game}></GameAttributes>
     </div>
   );
 };
