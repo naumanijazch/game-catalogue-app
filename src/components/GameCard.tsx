@@ -39,7 +39,7 @@ const GameCard = ({ game }: Props) => {
           <Box display="flex" alignItems="center">
             <CriticScore score={game.metacritic} />
             <Spacer width={2} />
-            <Rating rating={game.rating_top} />
+            <Rating rating={game.rating} />
           </Box>
         </HStack>
       </CardBody>

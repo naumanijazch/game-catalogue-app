@@ -1,7 +1,8 @@
 import { Button, HStack, Image } from "@chakra-ui/react";
-
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
+import websiteLogo from "../assets/website_logo.jpeg";
+import { Link } from "react-router-dom";
 
 interface NavBarProps {
   onLoading: () => void;
@@ -19,16 +20,25 @@ const NavBar = ({ onLoading }: NavBarProps) => {
 
   return (
     <HStack padding={"10px"}>
-      <Button onClick={() => redirectToGitHub()} variant={"link"} padding={0}>
+      <Link to="/">
+        <Image
+          src={websiteLogo}
+          boxSize={"50px"}
+          borderRadius={"full"}
+          objectFit={"cover"}
+        />
+      </Link>
+      <SearchInput />
+      <ColorModeSwitch />
+      <Button onClick={() => redirectToGitHub()} variant={"link"}>
         <Image
           src={githubProfilePicture}
-          boxSize={"60px"}
+          boxSize={"50px"}
           borderRadius={"full"}
+          objectFit={"cover"}
           alt="Git Hub Profile"
         />
       </Button>
-      <SearchInput></SearchInput>
-      <ColorModeSwitch></ColorModeSwitch>
     </HStack>
   );
 };
