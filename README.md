@@ -1,5 +1,8 @@
 # Project Documentation
 
+## Project Details
+The Game Catalogue App is a platform designed for gaming enthusiasts to browse and discover a wide variety of video games. The app features an intuitive interface that allows users to explore games by genre and platforms, view detailed game information, and toggle between light and dark modes for a personalized user experience.
+
 ## Screenshots of the Application
 
 ![Light Mode Landing Page](screenshots/landingPageLight.png)
